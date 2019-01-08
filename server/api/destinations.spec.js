@@ -1,32 +1,32 @@
 /* global describe beforeEach it */
 
-const {expect} = require('chai')
+const { expect } = require('chai')
 const request = require('supertest')
 const db = require('../db')
 const app = require('../index')
-const User = db.model('user')
+const User = db.model('destinations')
 
-describe('User routes', () => {
+describe('Destination routes', () => {
   beforeEach(() => {
-    return db.sync({force: true})
+    return db.sync({ force: true })
   })
 
-  describe('/api/users/', () => {
+  describe('/api/destinations/', () => {
     const codysEmail = 'cody@puppybook.com'
 
     beforeEach(() => {
-      return User.create({
+      return Destinations.create({
         email: codysEmail
       })
     })
 
-    it('GET /api/users', async () => {
+    it('GET /api/destinations', async () => {
       const res = await request(app)
-        .get('/api/users')
+        .get('/api/destinations')
         .expect(200)
 
       expect(res.body).to.be.an('array')
       expect(res.body[0].email).to.be.equal(codysEmail)
     })
-  }) // end describe('/api/users')
-}) // end describe('User routes')
+  }) // end describe('/api/destinations')
+}) // end describe('Destination routes')
