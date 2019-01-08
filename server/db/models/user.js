@@ -3,10 +3,20 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const User = db.define('user', {
+  userName: {
+    type: Sequelize.STRING,
+    defaultValue: 'Guest',
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
   email: {
     type: Sequelize.STRING,
-    unique: true,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      isEmail: true
+    }
   },
   password: {
     type: Sequelize.STRING,
@@ -23,9 +33,6 @@ const User = db.define('user', {
     get() {
       return () => this.getDataValue('salt')
     }
-  },
-  googleId: {
-    type: Sequelize.STRING
   }
 })
 
@@ -34,18 +41,18 @@ module.exports = User
 /**
  * instanceMethods
  */
-User.prototype.correctPassword = function(candidatePwd) {
+User.prototype.correctPassword = function (candidatePwd) {
   return User.encryptPassword(candidatePwd, this.salt()) === this.password()
 }
 
 /**
  * classMethods
  */
-User.generateSalt = function() {
+User.generateSalt = function () {
   return crypto.randomBytes(16).toString('base64')
 }
 
-User.encryptPassword = function(plainText, salt) {
+User.encryptPassword = function (plainText, salt) {
   return crypto
     .createHash('RSA-SHA256')
     .update(plainText)
@@ -57,7 +64,7 @@ User.encryptPassword = function(plainText, salt) {
  * hooks
  */
 const setSaltAndPassword = user => {
-  if (user.changed('password')) {
+  if (user.changed('password')) {         //changed is a sequelize method
     user.salt = User.generateSalt()
     user.password = User.encryptPassword(user.password(), user.salt())
   }
