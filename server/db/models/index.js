@@ -1,6 +1,7 @@
 const Destination = require('./destination');
 const User = require('./user');
 const Order = require('./order');
+const PaymentInfo = require('./paymentInfo')
 
 User.hasMany(Order);
 Order.belongsTo(User);
