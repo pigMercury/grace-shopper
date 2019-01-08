@@ -1,18 +1,18 @@
-const Destinations = require('./destinations');
-const Users = require('./users');
-const Orders = require('./orders');
+const Destination = require('./destination');
+const User = require('./user');
+const Order = require('./order');
 
-Users.hasMany(Orders);
-Orders.belongsTo(Users);
+User.hasMany(Order);
+Order.belongsTo(User);
 
-Orders.hasMany(Destinations);
-Destinations.belongsToMany(Orders);
+Order.hasMany(Destination);
+Destination.belongsToMany(Order);
 
 //Users have orders which have destinations, but users cannot directly have destinations
 
 module.exports = {
-  Destinations,
-  Users,
-  Orders,
+  Destination,
+  User,
+  Order,
   PaymentInfo
 }
