@@ -22,7 +22,7 @@ describe('Order routes', () => {
       imageUrl: null,
       cost: 500,
       timePeriod: 'Prehistoric',
-      decription: 'REALLY LOUD'
+      description: 'REALLY LOUD'
     }
 
     const frenchRev = {
