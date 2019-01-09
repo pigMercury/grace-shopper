@@ -101,6 +101,7 @@ const orderData = [
   {completed: false},
   {completed: false},
   {completed: false},
+  {completed: false},
   {completed: true}
 ]
 
@@ -161,7 +162,7 @@ async function seed() {
     amazon
   ] = destinations
   const [janelle, awkwafina, beyonce, laura] = users
-  const [first, second, third, fourth] = orders
+  const [first, second, third, fourth, fifth] = orders
   const [trip1, trip2, trip3, trip4, trip5, trip6, trip7] = trips
 
   await Promise.all([
@@ -169,14 +170,15 @@ async function seed() {
     second.setUser(awkwafina),
     third.setUser(beyonce),
     fourth.setUser(laura),
+    fifth.setUser(janelle),
 
     trip1.setOrder(first),
     trip2.setOrder(second),
     trip3.setOrder(third),
     trip4.setOrder(fourth),
-    trip5.setOrder(first),
-    trip6.setOrder(second),
-    trip7.setOrder(third),
+    trip5.setOrder(fifth),
+    trip6.setOrder(first),
+    trip7.setOrder(second),
 
     trip1.setDestination(germany),
     trip2.setDestination(prehistoric),
