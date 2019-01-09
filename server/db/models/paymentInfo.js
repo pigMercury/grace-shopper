@@ -2,7 +2,7 @@ const crypto = require('crypto')
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const paymentInfo = db.define('paymentInfo', {
+const PaymentInfo = db.define('paymentInfo', {
   name: {
     type: Sequelize.STRING,
     allowNull: false,
