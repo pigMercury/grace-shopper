@@ -9,8 +9,8 @@ Order.belongsTo(User)
 Order.hasMany(Trip)
 Trip.belongsTo(Order)
 
-Trip.hasOne(Destination)
-Destination.belongsToMany(Trip)
+Destination.hasMany(Trip)
+Trip.belongsTo(Destination)
 
 //Users have orders which have trips which have one destination each
 
