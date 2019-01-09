@@ -3,7 +3,6 @@ module.exports = router
 
 // use /api
 router.use('/order', require('./order'))
-router.use('/trip', require('./trip'))
 router.use('/destination', require('./destination'))
 router.use('/user', require('./user'))
 
