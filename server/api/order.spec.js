@@ -30,7 +30,7 @@ describe('Order routes', () => {
       imageUrl: null,
       cost: 100,
       timePeriod: '19th Century',
-      decription: 'Really bloody... watch your head...'
+      description: 'Really bloody... watch your head...'
     }
 
     //make an order
