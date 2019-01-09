@@ -110,7 +110,8 @@ const tripData = [
   {numPassengers: 4},
   {numPassengers: 1},
   {numPassengers: 1},
-  {numPassengers: 2}
+  {numPassengers: 2},
+  {numPassengers: 3}
 ]
 
 async function seed() {
@@ -150,7 +151,41 @@ async function seed() {
   console.log(`seeded ${trips.length} trips`)
 
   // associations here
+  const [
+    germany,
+    prehistoric,
+    paris,
+    olympics,
+    china,
+    india,
+    amazon
+  ] = destinations
+  const [janelle, awkwafina, beyonce, laura] = users
+  const [first, second, third, fourth] = orders
+  const [trip1, trip2, trip3, trip4, trip5, trip6, trip7] = trips
 
+  await Promise.all([
+    first.setUser(janelle),
+    second.setUser(awkwafina),
+    third.setUser(beyonce),
+    fourth.setUser(laura),
+
+    trip1.setOrder(first),
+    trip2.setOrder(second),
+    trip3.setOrder(third),
+    trip4.setOrder(fourth),
+    trip5.setOrder(first),
+    trip6.setOrder(second),
+    trip7.setOrder(third),
+
+    trip1.setDestination(germany),
+    trip2.setDestination(prehistoric),
+    trip3.setDestination(paris),
+    trip4.setDestination(olympics),
+    trip5.setDestination(china),
+    trip6.setDestination(india),
+    trip7.setDestination(amazon)
+  ])
   console.log(`seeded successfully`)
 }
 
