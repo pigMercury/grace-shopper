@@ -1,19 +1,22 @@
-const Destination = require('./destination');
-const User = require('./user');
-const Order = require('./order');
-const PaymentInfo = require('./paymentInfo')
+const Destination = require('./destination')
+const User = require('./user')
+const Order = require('./order')
+const Trip = require('./trip')
 
-User.hasMany(Order);
-Order.belongsTo(User);
+User.hasMany(Order)
+Order.belongsTo(User)
 
-Order.belongsToMany(Destination, {through: 'cart'});
-Destination.belongsToMany(Order, {through: 'cart'});
+Order.hasMany(Trip)
+Trip.belongsTo(Order)
 
-//Users have orders which have destinations, but users cannot directly have destinations
+Destination.hasMany(Trip)
+Trip.belongsTo(Destination)
+
+//Users have orders which have trips which have one destination each
 
 module.exports = {
   Destination,
   User,
   Order,
-  PaymentInfo
+  Trip
 }
