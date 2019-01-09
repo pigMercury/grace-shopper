@@ -18,11 +18,9 @@ const Destination = db.define('destination', {
     }
   },
   cost: {
-    type: Sequelize.FLOAT,
-    // Making `.password` act like a func hides it when serializing to JSON.
-    // This is a hack to get around Sequelize's lack of a "private" option.
+    type: Sequelize.INTEGER,
     get() {
-      return () => ('$' + this.getDataValue('cost'))
+      return () => '$' + this.getDataValue('cost')
     }
   },
   timePeriod: {
