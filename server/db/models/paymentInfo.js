@@ -1,3 +1,4 @@
+// Maybe we don't need this model since we're using stripe!
 const crypto = require('crypto')
 const Sequelize = require('sequelize')
 const db = require('../db')

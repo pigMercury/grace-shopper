@@ -1,3 +1,6 @@
+/*
+  Remove large code comment blocks please!
+*/
 // /* global describe beforeEach it */
 
 // const {expect} = require('chai')
