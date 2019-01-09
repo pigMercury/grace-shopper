@@ -4,7 +4,7 @@ const {Destination} = require('../db/models')
 
 module.exports = router
 
-//GET route to serve up one order by id
+//GET route /api/order/:id to serve up one order by id
 router.get('/:id', async (req, res, next) => {
   try {
     const order = await Trip.findAll({
