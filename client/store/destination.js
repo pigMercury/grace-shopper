@@ -39,7 +39,7 @@ const initialState = {
   singleDestination: {}
 }
 
-const destinationsReducer = (state = initialState, action) => {
+const destinationReducer = (state = initialState, action) => {
   const newState = {...state}
 
   switch (action.type) {
@@ -54,4 +54,4 @@ const destinationsReducer = (state = initialState, action) => {
   }
 }
 
-export default destinationsReducer
+export default destinationReducer
