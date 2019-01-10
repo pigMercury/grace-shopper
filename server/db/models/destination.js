@@ -19,9 +19,7 @@ const Destination = db.define('destination', {
   },
   cost: {
     type: Sequelize.INTEGER,
-    get() {
-      return () => '$' + this.getDataValue('cost')
-    }
+    allowNull: false
   },
   timePeriod: {
     type: Sequelize.STRING,

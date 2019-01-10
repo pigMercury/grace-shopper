@@ -1,7 +1,5 @@
 /* global describe beforeEach it */
 
-//Needs to be finished!
-
 const {expect} = require('chai')
 const request = require('supertest')
 const db = require('../db')
@@ -36,49 +34,49 @@ describe('Order routes', () => {
     //make an order
     const testOrder = {
       completed: false
-      //id: 1
+      //userId: 1
     }
 
     //make trips
     const bigBangTrip = {
       numPassengers: 4,
-      destinationId: bigBang.id
-      //orderId: testOrder.id
+      destinationId: 1,
+      orderId: 1,
+      id: 1
     }
 
     const frenchRevTrip = {
       numPassengers: 2,
-      destinationId: frenchRev.id
-      //orderId: testOrder.id
+      destinationId: 2,
+      orderId: 1,
+      id: 2
     }
-
-    // beforeEach(() => {
-    //   return Destination.bulkCreate([bigBang, frenchRev])
-    // })
 
     beforeEach(() => {
       return Destination.bulkCreate([bigBang, frenchRev])
     })
 
     beforeEach(() => {
-      return Trip.bulkCreate([bigBangTrip, frenchRevTrip])
-    })
-
-    beforeEach(() => {
       return Order.create(testOrder)
     })
 
-    it('GET /api/order/:id', async () => {
+    beforeEach(() => {
+      return Trip.bulkCreate([bigBangTrip, frenchRevTrip])
+    })
+
+    it('Gets trips, eager loads destinations', async () => {
+      //should return array of trips
       const res = await request(app)
         .get(`/api/order/1`)
         .expect(200)
 
       expect(res.body).to.be.an('array') //array of trips
-      // expect(res.body[0].id).to.be.equal(bigBang.id)
-      // expect(res.body[1].id).to.be.equal(frenchRev.id)
-      // expect(res.body[0].destination).to.be.an('object')
-      // expect(res.body[0].destination.name).to.be.equal('Big Bang')
-      // expect(Math.number(res.body[1].destination.cost)).to.be.equal(100)
+      console.log(res.body)
+      expect(res.body[0].destination).to.be.an('object')
+      expect(res.body[0].id).to.be.equal(bigBangTrip.id)
+      expect(res.body[1].id).to.be.equal(frenchRevTrip.id)
+      expect(res.body[0].destination.name).to.be.equal('Big Bang')
+      expect(res.body[1].destination.cost).to.be.equal(100)
     })
   }) // end describe('/api/order')
 }) // end describe('order routes')
