@@ -12,21 +12,42 @@ describe('Destination routes', () => {
   })
 
   describe('/api/destination/', () => {
-    const codysEmail = 'cody@puppybook.com'
+    const bigBang = {
+      name: 'Big Bang',
+      imageUrl: null,
+      cost: 500,
+      timePeriod: 'Prehistoric',
+      description: 'REALLY LOUD'
+    }
+
+    const frenchRev = {
+      name: 'French Revolution',
+      imageUrl: null,
+      cost: 100,
+      timePeriod: '19th Century',
+      description: 'Really bloody... watch your head...'
+    }
 
     beforeEach(() => {
-      return Destination.create({
-        email: codysEmail
-      })
+      return Destination.bulkCreate([bigBang, frenchRev])
     })
 
-    xit('GET /api/destination', async () => {
+    // xit('GET /api/destination', async () => {
+    //   const res = await request(app)
+    //     .get('/api/destination')
+    //     .expect(200)
+
+    //   expect(res.body).to.be.an('object')
+    //   expect(res.body.name).to.be.equal('Big Bang')
+    // })
+
+    it('GET /api/destination/:id', async () => {
       const res = await request(app)
-        .get('/api/destination')
+        .get(`/api/destination/2`)
         .expect(200)
 
-      expect(res.body).to.be.an('array')
-      expect(res.body[0].email).to.be.equal(codysEmail)
+      expect(res.body).to.be.an('object')
+      expect(res.body.name).to.be.equal('French Revolution')
     })
   }) // end describe('/api/destination')
 }) // end describe('Destination routes')
