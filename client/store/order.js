@@ -38,7 +38,7 @@ const initialState = {
   activeOrder: {}
 }
 
-const orderReducer = (state = initialState, action) => {
+const order = (state = initialState, action) => {
   const newState = {...state}
 
   switch (action.type) {
@@ -53,4 +53,4 @@ const orderReducer = (state = initialState, action) => {
   }
 }
 
-export default orderReducer
+export default order

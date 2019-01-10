@@ -53,7 +53,7 @@ const initialState = {
   trips: []
 }
 
-const tripReducer = (state = initialState, action) => {
+const trip = (state = initialState, action) => {
   const newState = {...state}
   let newTrips = [...state.trips]
 
@@ -79,4 +79,4 @@ const tripReducer = (state = initialState, action) => {
   }
 }
 
-export default tripReducer
+export default trip

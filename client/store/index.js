@@ -2,15 +2,15 @@ import {createStore, combineReducers, applyMiddleware} from 'redux'
 import createLogger from 'redux-logger'
 import thunkMiddleware from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
-import destinationReducer from './destination'
-import orderReducer from './order'
-import tripReducer from './trip'
+import destination from './destination'
+import order from './order'
+import trip from './trip'
 import user from './user' // pretty sure we'll be deleting this, but
 
 const rootReducer = combineReducers({
-  destinationReducer,
-  orderReducer,
-  tripReducer
+  destination,
+  order,
+  trip
 })
 
 const middleware = composeWithDevTools(
