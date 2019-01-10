@@ -35,8 +35,8 @@ export const fetchSingleDestination = destinationId => {
 }
 
 const initialState = {
-  destinations: [],
-  singleDestination: {}
+  destinations: [], //array of all destination objects
+  singleDestination: {} //single destination object
 }
 
 const destinationReducer = (state = initialState, action) => {
