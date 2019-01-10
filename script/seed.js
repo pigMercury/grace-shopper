@@ -6,15 +6,14 @@ const {Destination, User, Order, Trip} = require('../server/db/models')
 const destinationData = [
   {
     name: 'World War II Germany',
-    imageUrl:
-      'https://www.historia.ro/sectiune/general/articol/the-german-resistance-to-hitler-from-protests-to-assassinations',
+    imageURL: 'https://historia.adhst.ro/img/articles/2017/03/22/hitler_6.jpg',
     cost: 3000,
     timePeriod: '20th century',
     description: 'Everybody wants to kill Hitler!'
   },
   {
     name: 'Prehistoric Times',
-    imageUrl:
+    imageURL:
       'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/jurassic-dinosaurs-artwork-richard-bizley.jpg',
     cost: 12000,
     timePeriod: 'Jurassic',
@@ -22,7 +21,7 @@ const destinationData = [
   },
   {
     name: 'Paris World Fair',
-    imageUrl:
+    imageURL:
       'https://i1.wp.com/parisbanlieue.blog.lemonde.fr/files/2008/03/construction-de-la-tour-eiffel.1205317476.jpg?zoom=2&resize=400%2C199',
     cost: 2500,
     timePeriod: '19th century',
@@ -30,7 +29,7 @@ const destinationData = [
   },
   {
     name: 'The First Olympics',
-    imageUrl:
+    imageURL:
       'https://www.historyonthenet.com/wp-content/uploads/2014/07/anicent-olympics-games.jpg',
     cost: 9000,
     timePeriod: '8th century BCE',
@@ -39,7 +38,7 @@ const destinationData = [
   },
   {
     name: 'Great Wall of China',
-    imageUrl:
+    imageURL:
       'https://www.ancient-origins.net/sites/default/files/field/image/The-Great-Wall-of-China.jpg',
     cost: 5000,
     timePeriod: '1st century BCE',
@@ -48,7 +47,7 @@ const destinationData = [
   },
   {
     name: 'Taj Majal',
-    imageUrl:
+    imageURL:
       'https://img.purch.com/h/1400/aHR0cDovL3d3dy5saXZlc2NpZW5jZS5jb20vaW1hZ2VzL2kvMDAwLzAzNi83NTYvb3JpZ2luYWwvc2h1dHRlcnN0b2NrXzEwNzI2MTI0OS5qcGc/MTM2MDg3MTkxMQ==',
     cost: 6000,
     timePeriod: '17th century',
@@ -57,7 +56,7 @@ const destinationData = [
   },
   {
     name: 'Amazon Rainforest',
-    imageUrl:
+    imageURL:
       'http://amazonrainforestfirstperiod.weebly.com/uploads/1/4/4/9/14499886/4923961.jpeg?542',
     cost: 4000,
     timePeriod: '16th century',

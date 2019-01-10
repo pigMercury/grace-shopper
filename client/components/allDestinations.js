@@ -1,42 +1,61 @@
-import React from 'react'
+import React, {Component} from 'react'
 // import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {NavLink} from 'react-router-dom'
+import {withRouter, NavLink} from 'react-router-dom'
+import {fetchDestinations} from '../store/destination'
 
 //Component
-export const AllDestinations = props => {
-  const {destinationArr} = props
-  return (
-    <div>
-      <h3>Destinations</h3>
-      <ul className="destinationsList">
-        {destinationArr.map(dest => {
-          dest.url = '/destination/' + dest.id
-          return (
-            <div key={dest.id}>
-              <NavLink to={dest.url}>
-                <h4>{dest.name}</h4>
-                <img className="thumbnail" src={dest.imageUrl} />
-              </NavLink>
-              <h5>{dest.cost}</h5>
-              <button type="submit">Add to Cart</button>{' '}
-              {/* ^^might need to modify */}
-            </div>
-          )
-        })}
-      </ul>
-    </div>
-  )
+class AllDestinations extends Component {
+  constructor() {
+    super()
+  }
+
+  componentDidMount() {
+    this.props.fetchDestinations()
+  }
+  render() {
+    console.log(this.props)
+    return (
+      <div>
+        <h3>Destinations</h3>
+        <ul className="destinationsList">
+          {this.props.destinationArr.map(dest => {
+            dest.url = '/destination/' + dest.id
+            console.log(dest.imageURL)
+            return (
+              <div key={dest.id}>
+                <NavLink to={dest.url}>
+                  <h4>{dest.name}</h4>
+                  <img className="thumbnail" src={dest.imageURL} />
+                </NavLink>
+                <h5>{dest.cost}</h5>
+                <button type="submit">Add to Cart</button>{' '}
+                {/* ^^might need to modify */}
+              </div>
+            )
+          })}
+        </ul>
+      </div>
+    )
+  }
 }
 
 //Container
 const mapStateToProps = state => {
   return {
-    destinationArr: state.destinationReducer.destinations
+    destinationArr: state.destination.destinations
   }
 }
 
-export default connect(mapStateToProps)(AllDestinations)
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchDestinations: () => dispatch(fetchDestinations())
+  }
+}
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(AllDestinations)
+)
 
 // /**
 //  * PROP TYPES
