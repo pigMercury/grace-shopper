@@ -29,19 +29,24 @@ describe('Destination routes', () => {
     }
 
     beforeEach(() => {
-      return Destination.bulkCreate([bigBang, frenchRev])
+      return Destination.create(bigBang)
     })
 
-    // xit('GET /api/destination', async () => {
-    //   const res = await request(app)
-    //     .get('/api/destination')
-    //     .expect(200)
+    beforeEach(() => {
+      return Destination.create(frenchRev)
+    })
 
-    //   expect(res.body).to.be.an('object')
-    //   expect(res.body.name).to.be.equal('Big Bang')
-    // })
+    it('gets all destinations', async () => {
+      const res = await request(app)
+        .get('/api/destination')
+        .expect(200)
 
-    it('GET /api/destination/:id', async () => {
+      expect(res.body).to.be.an('array')
+      expect(res.body[0].name).to.be.equal('Big Bang')
+      expect(res.body[1].name).to.be.equal('French Revolution')
+    })
+
+    it('gets a destination by its id', async () => {
       const res = await request(app)
         .get(`/api/destination/2`)
         .expect(200)
