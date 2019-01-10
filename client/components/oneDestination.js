@@ -20,11 +20,11 @@ export const OneDestination = props => {
 //Container
 const mapStateToProps = state => {
   return {
-    name: state.destinationReducer.singleDestination.name,
-    imageUrl: state.destinationReducer.singleDestination.imageUrl,
-    cost: state.destinationReducer.singleDestination.cost,
-    timePeriod: state.destinationReducer.singleDestination.timePeriod,
-    description: state.destinationReducer.singleDestination.description
+    name: state.destination.singleDestination.name,
+    imageUrl: state.destination.singleDestination.imageUrl,
+    cost: state.destination.singleDestination.cost,
+    timePeriod: state.destination.singleDestination.timePeriod,
+    description: state.destination.singleDestination.description
   }
 }
 
