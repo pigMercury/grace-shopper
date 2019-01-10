@@ -19,7 +19,7 @@ export const gotSingleDestination = singleDestination => {
   }
 }
 
-//thunks
+//thunk creators
 export const fetchDestinations = () => {
   return async dispatch => {
     const {data} = await axios.get('/api/destination')
