@@ -14,7 +14,7 @@ describe('Destination routes', () => {
   describe('/api/destination/', () => {
     const bigBang = {
       name: 'Big Bang',
-      imageUrl: null,
+      imageURL: null,
       cost: 500,
       timePeriod: 'Prehistoric',
       description: 'REALLY LOUD'
@@ -22,7 +22,7 @@ describe('Destination routes', () => {
 
     const frenchRev = {
       name: 'French Revolution',
-      imageUrl: null,
+      imageURL: null,
       cost: 100,
       timePeriod: '19th Century',
       description: 'Really bloody... watch your head...'

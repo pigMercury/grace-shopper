@@ -1,38 +1,19 @@
 import React from 'react'
 // import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
+import {NavLink} from 'react-router-dom'
 
 //Component
-export const OneDestination = props => {
-  const {name, imageUrl, cost, timePeriod, description} = props
+export default function OneDestination(props) {
+  const dest = props.dest
   return (
     <div>
-      <h3>{name}</h3>
-      <img src={imageUrl} />
-      <h4>{timePeriod}</h4>
-      <p>{description}</p>
-      <h6>{cost}</h6>
-      <button type="submit">Add to Cart</button> {/* ^^might need to modify */}
+      <NavLink to={`/destination/${dest.id}`}>
+        <h4>{dest.name}</h4>
+        <img className="thumbnail" src={dest.imageURL} />
+      </NavLink>
+      <h5>{dest.cost}</h5>
+      <button type="submit">Add to Cart</button>
+      {/* ^^might need to modify */}
     </div>
   )
 }
-
-//Container
-const mapStateToProps = state => {
-  return {
-    name: state.destination.singleDestination.name,
-    imageUrl: state.destination.singleDestination.imageUrl,
-    cost: state.destination.singleDestination.cost,
-    timePeriod: state.destination.singleDestination.timePeriod,
-    description: state.destination.singleDestination.description
-  }
-}
-
-export default connect(mapStateToProps)(OneDestination)
-
-// /**
-//  * PROP TYPES
-//  */
-// UserHome.propTypes = {
-//   email: PropTypes.string
-// }
