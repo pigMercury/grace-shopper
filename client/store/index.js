@@ -10,7 +10,8 @@ import user from './user' // pretty sure we'll be deleting this, but
 const rootReducer = combineReducers({
   destination,
   order,
-  trip
+  trip,
+  user
 })
 
 const middleware = composeWithDevTools(
@@ -21,3 +22,5 @@ const store = createStore(rootReducer, middleware)
 export default store
 export * from './user' // again, probly going to delete this when we get to users
 export * from './destination'
+export * from './order'
+export * from './trip'
