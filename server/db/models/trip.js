@@ -4,7 +4,8 @@ const db = require('../db')
 const Trip = db.define('trip', {
   numPassengers: {
     type: Sequelize.INTEGER,
-    allowNull: false
+    allowNull: false,
+    validate: {min: 1}
   }
 })
 
