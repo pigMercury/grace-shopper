@@ -20,7 +20,7 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const {userId} = req.body
-    const order = await Order.create(userId)
+    const order = await Order.create({userId})
     if (order) res.json(order).status(201)
     else res.sendStatus(404)
   } catch (err) {
