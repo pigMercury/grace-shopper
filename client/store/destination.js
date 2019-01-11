@@ -19,7 +19,7 @@ export const gotSingleDestination = singleDestination => {
   }
 }
 
-//thunks
+//thunk creators
 export const fetchDestinations = () => {
   return async dispatch => {
     const {data} = await axios.get('/api/destination')
@@ -39,7 +39,7 @@ const initialState = {
   singleDestination: {} //single destination object
 }
 
-const destinationReducer = (state = initialState, action) => {
+const destination = (state = initialState, action) => {
   const newState = {...state}
 
   switch (action.type) {
@@ -54,4 +54,4 @@ const destinationReducer = (state = initialState, action) => {
   }
 }
 
-export default destinationReducer
+export default destination
