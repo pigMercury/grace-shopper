@@ -24,3 +24,8 @@ form div {
   max-height: 25vw;
   max-width: 25vw;
 }
+
+.thumbnail {
+  max-height: 15vw;
+  max-width: 15vw;
+}

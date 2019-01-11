@@ -20,7 +20,7 @@ const middleware = composeWithDevTools(
 const store = createStore(rootReducer, middleware)
 
 export default store
-export * from './user' // again, probly going to delete this when we get to users
+export * from './user'
 export * from './destination'
 export * from './order'
 export * from './trip'
