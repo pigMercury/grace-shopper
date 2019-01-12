@@ -42,9 +42,9 @@ export const deleteTrip = id => {
   }
 }
 
-export const changeNumPassengers = (id, direction) => {
+export const changeNumPassengers = trip => {
   return async dispatch => {
-    const {data} = await axios.put(`/api/trip/${id}`, direction)
+    const {data} = await axios.put(`/api/trip/${trip.id}`, trip)
     dispatch(changedNumPassengers(data))
   }
 }
