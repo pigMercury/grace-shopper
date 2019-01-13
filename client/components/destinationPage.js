@@ -13,8 +13,7 @@ class DestinationPage extends Component {
   render() {
     const {name, imageURL, cost, timePeriod, description} = this.props
     return (
-      <div>
-        <h1>Hello</h1>
+      <div className="destinationPage">
         <h3>{name}</h3>
         <img src={imageURL} />
         <h4>{timePeriod}</h4>
