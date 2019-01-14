@@ -7,6 +7,7 @@ export const CHANGED_NUM_PASSENGERS = 'CHANGED_NUM_PASSENGERS'
 
 //action creators
 export const createdTrip = trip => {
+  // console.log("createdTrip action creator")
   return {
     type: CREATED_TRIP,
     trip
@@ -29,8 +30,12 @@ export const changedNumPassengers = trip => {
 
 //thunk creators
 export const createTrip = trip => {
+  // console.log("trip.js in store")
   return async dispatch => {
+    // console.log(trip)
+    await axios.post('/api/trip', trip)
     const {data} = await axios.post('/api/trip', trip)
+    // console.log("data in createTrip thunk: ", data)
     dispatch(createdTrip(data))
   }
 }
@@ -50,8 +55,7 @@ export const changeNumPassengers = trip => {
 }
 
 const initialState = {
-  // trips: []
-  trips: [{id: 1, numPassengers: 2, orderId: 2, destinationId: 2}]
+  trips: []
 }
 
 const trip = (state = initialState, action) => {
@@ -60,7 +64,8 @@ const trip = (state = initialState, action) => {
 
   switch (action.type) {
     case CREATED_TRIP:
-      newTrips.push(action.trip.trip)
+      // console.log(action.trip)
+      newTrips.push(action.trip)
       newState.trips = newTrips
       return newState
     case DELETED_TRIP:
