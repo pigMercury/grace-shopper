@@ -6,8 +6,7 @@ module.exports = router
 //POST route /api/trip to create a new trip
 router.post('/', async (req, res, next) => {
   try {
-    const {numPassengers} = req.body
-    const tripInfo = await Trip.create({numPassengers})
+    const tripInfo = await Trip.create(req.body)
     const dest = await Destination.findById(tripInfo.destinationId)
     const trip = {...tripInfo, cost: dest.cost} //include the cost for cart component
     if (trip) res.status(201).json(trip)
@@ -18,12 +17,11 @@ router.post('/', async (req, res, next) => {
 })
 
 //PUT route /api/trip to update num passengers
-router.put('/:tripId', async (req, res, next) => {
+router.put('/:tripId', isAuthenticated, async (req, res, next) => {
   try {
     const id = req.params.tripId
     const {numPassengers} = req.body
     const currentTrip = await Trip.findById(id)
-    console.log('curr', currentTrip)
     const updatedTrip = await currentTrip.update({numPassengers})
     res
       .json({
@@ -37,7 +35,7 @@ router.put('/:tripId', async (req, res, next) => {
 })
 
 //DELETE route route /api/trip/:id to delete trip
-router.delete('/:tripId', async (req, res, next) => {
+router.delete('/:tripId', isAuthenticatedFromId, async (req, res, next) => {
   try {
     const id = req.params.tripId
     await Trip.destroy({where: {id}})
@@ -46,3 +44,28 @@ router.delete('/:tripId', async (req, res, next) => {
     next(err)
   }
 })
+
+async function isAuthenticated(req, res, next) {
+  try {
+    const order = await Order.findById(req.body.orderId)
+    if (order.userId) {
+      if (req.user.id === order.userId) next()
+      else res.redirect('/')
+    } else return next()
+  } catch (err) {
+    next(err)
+  }
+}
+
+async function isAuthenticatedFromId(req, res, next) {
+  try {
+    const trip = await Trip.findById(req.params.tripId)
+    const order = await Order.findById(trip.orderId)
+    if (order.userId) {
+      if (req.user.id === order.userId) next()
+      else res.redirect('/')
+    } else return next()
+  } catch (err) {
+    next(err)
+  }
+}

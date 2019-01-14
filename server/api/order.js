@@ -42,19 +42,18 @@ router.put('/:id', isAuthenticated, async (req, res, next) => {
 })
 
 async function isAuthenticated(req, res, next) {
-  console.log('REQUEST MADE')
-  if (req.user) {
-    try {
-      const order = await Order.findById(req.params.id)
-      console.log('order.userId:', order.userId, 'req.user.id:', req.user.id)
+  try {
+    const order = await Order.findById(req.params.id)
+    if (order.userId && req.user) {
       if (order.userId === req.user.id) {
         return next()
-      }
-    } catch (err) {
-      next(err)
+      } else res.redirect('/')
+    } else if (!order.userId) {
+      return next()
+    } else if (order.userId && !req.user) {
+      res.redirect('/')
     }
-    res.redirect('/')
-  } else {
-    return next()
+  } catch (err) {
+    next(err)
   }
 }
