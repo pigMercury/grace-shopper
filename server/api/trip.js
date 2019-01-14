@@ -27,7 +27,7 @@ router.post('/', async (req, res, next) => {
 })
 
 //PUT route /api/trip to update num passengers
-router.put('/:tripId', async (req, res, next) => {
+router.put('/:tripId', isAuthenticated, async (req, res, next) => {
   try {
     const id = req.params.tripId
     const {numPassengers} = req.body
@@ -45,7 +45,7 @@ router.put('/:tripId', async (req, res, next) => {
 })
 
 //DELETE route route /api/trip/:id to delete trip
-router.delete('/:tripId', async (req, res, next) => {
+router.delete('/:tripId', isAuthenticatedFromId, async (req, res, next) => {
   try {
     const id = req.params.tripId
     await Trip.destroy({where: {id}})
@@ -54,3 +54,28 @@ router.delete('/:tripId', async (req, res, next) => {
     next(err)
   }
 })
+
+async function isAuthenticated(req, res, next) {
+  try {
+    const order = await Order.findById(req.body.orderId)
+    if (order.userId) {
+      if (req.user.id === order.userId) next()
+      else res.redirect('/')
+    } else return next()
+  } catch (err) {
+    next(err)
+  }
+}
+
+async function isAuthenticatedFromId(req, res, next) {
+  try {
+    const trip = await Trip.findById(req.params.tripId)
+    const order = await Order.findById(trip.orderId)
+    if (order.userId) {
+      if (req.user.id === order.userId) next()
+      else res.redirect('/')
+    } else return next()
+  } catch (err) {
+    next(err)
+  }
+}

@@ -4,9 +4,9 @@
  * having to figure out which file they belong to!
  */
 export {default as Navbar} from './navbar'
-export {default as UserHome} from './user-home'
-export {default as HomePage} from './home-page'
+export {default as UserHome} from './userHome'
+export {default as HomePage} from './homePage'
 export {default as AllDestinations} from './allDestinations'
 export {default as DestinationPage} from './destinationPage'
 export {default as Cart} from './cart'
-export {Login, Signup} from './auth-form'
+export {Login, Signup} from './authForm'

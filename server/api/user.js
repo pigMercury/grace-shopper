@@ -2,10 +2,9 @@ const router = require('express').Router()
 const {Order, User} = require('../db/models')
 module.exports = router
 
-//GET route /api/user/:id to serve all a user's orders (not eagerly loaded)
-router.get('/:id', async (req, res, next) => {
+//GET route /api/user/:id to serve all a user's orders (not eager loaded)
+router.get('/:id', isAuthenticated, async (req, res, next) => {
   try {
-
     //returns array of orders, use orderId to load trips later
     const orders = await Order.findAll({
       where: {
@@ -24,3 +23,16 @@ router.get('/:id', async (req, res, next) => {
     next(err)
   }
 })
+
+function isAuthenticated(req, res, next) {
+  if (req.user) {
+    try {
+      if (req.user.id === Number(req.params.id)) {
+        return next()
+      }
+    } catch (err) {
+      next(err)
+    }
+    res.redirect('/')
+  } else res.redirect('/')
+}
