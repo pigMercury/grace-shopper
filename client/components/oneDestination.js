@@ -2,6 +2,11 @@ import React from 'react'
 // import PropTypes from 'prop-types'
 import {NavLink} from 'react-router-dom'
 
+// Thoughts
+// Define a handle submit func in the parent component, pass in as a prop;
+// this will add the destination to the cart
+// render number input field next to add button, use that input as # passengers
+
 //Component
 export default function OneDestination(props) {
   const dest = props.dest
@@ -11,9 +16,8 @@ export default function OneDestination(props) {
         <h4>{dest.name}</h4>
         <img className="thumbnail" src={dest.imageURL} />
       </NavLink>
-      <h5>{dest.cost}</h5>
+      <h5>${dest.cost}</h5>
       <button type="submit">Add to Cart</button>
-      {/* ^^might need to modify */}
     </div>
   )
 }

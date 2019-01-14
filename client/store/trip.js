@@ -50,7 +50,8 @@ export const changeNumPassengers = trip => {
 }
 
 const initialState = {
-  trips: []
+  // trips: []
+  trips: [{id: 1, numPassengers: 2, orderId: 2, destinationId: 2}]
 }
 
 const trip = (state = initialState, action) => {
@@ -59,7 +60,7 @@ const trip = (state = initialState, action) => {
 
   switch (action.type) {
     case CREATED_TRIP:
-      newTrips.push(action.trip)
+      newTrips.push(action.trip.trip)
       newState.trips = newTrips
       return newState
     case DELETED_TRIP:

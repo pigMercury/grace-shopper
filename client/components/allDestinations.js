@@ -17,7 +17,6 @@ class AllDestinations extends Component {
         <h3 className="title">Destinations</h3>
         <ul className="destinationsList">
           {this.props.destinationArr.map(dest => {
-            console.log(dest)
             return <OneDestination dest={dest} key={dest.id} />
           })}
         </ul>

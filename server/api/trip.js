@@ -7,7 +7,9 @@ module.exports = router
 router.post('/', async (req, res, next) => {
   try {
     const {numPassengers} = req.body
-    const trip = await Trip.create({numPassengers})
+    const tripInfo = await Trip.create({numPassengers})
+    const dest = await Destination.findById(tripInfo.destinationId)
+    const trip = {...tripInfo, cost: dest.cost} //include the cost for cart component
     if (trip) res.status(201).json(trip)
     else res.sendStatus(404)
   } catch (err) {
