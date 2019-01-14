@@ -19,7 +19,7 @@ class DestinationPage extends Component {
         <img src={imageURL} />
         <h4>{timePeriod}</h4>
         <p>{description}</p>
-        <h6>{cost}</h6>
+        <h6>${cost}</h6>
         <button type="submit">Add to Cart</button>{' '}
         {/* ^^might need to modify */}
       </div>

@@ -8,7 +8,8 @@ import {
   UserHome,
   HomePage,
   AllDestinations,
-  DestinationPage
+  DestinationPage,
+  Cart
 } from './components'
 import {me} from './store'
 
@@ -37,6 +38,7 @@ class Routes extends Component {
         <Route exact path="/home" component={HomePage} />
         <Route exact path="/destination/:id" component={DestinationPage} />
         <Route exact path="/destination" component={AllDestinations} />
+        <Route exact path="/cart" component={Cart} />
         {/* Displays our HomePage component as a fallback */}
         <Route component={HomePage} />
       </Switch>
