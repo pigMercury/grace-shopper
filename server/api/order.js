@@ -3,8 +3,8 @@ const {Destination, Order, Trip, User} = require('../db/models')
 
 module.exports = router
 
-//GET route /api/order/:id to serve up one order by id
-router.get('/:id', async (req, res, next) => {
+//GET route /api/order/:id to serve up one order by OrderId
+router.get('/:id', isAuthenticated, async (req, res, next) => {
   try {
     const order = await Trip.findAll({
       where: {orderId: req.params.id},
@@ -29,9 +29,9 @@ router.post('/', async (req, res, next) => {
 })
 
 //PUT route /api/orderId to complete an order
-router.put('/:orderId', async (req, res, next) => {
+router.put('/:id', isAuthenticated, async (req, res, next) => {
   try {
-    const id = req.params.orderId
+    const id = req.params.id
     const order = req.body
     const currentOrder = await Order.findById(id)
     const updatedOrder = await currentOrder.update(order)
@@ -40,3 +40,21 @@ router.put('/:orderId', async (req, res, next) => {
     next(err)
   }
 })
+
+async function isAuthenticated(req, res, next) {
+  console.log('REQUEST MADE')
+  if (req.user) {
+    try {
+      const order = await Order.findById(req.params.id)
+      console.log('order.userId:', order.userId, 'req.user.id:', req.user.id)
+      if (order.userId === req.user.id) {
+        return next()
+      }
+    } catch (err) {
+      next(err)
+    }
+    res.redirect('/')
+  } else {
+    return next()
+  }
+}
