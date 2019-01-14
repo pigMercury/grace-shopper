@@ -89,7 +89,7 @@ describe.only('User routes', () => {
   describe('/api/user/:id', () => {
     //sends an object with two keys: userInfo (object) and user's orders (array of orders)
 
-    it('GET /api/order/:id', async () => {
+    xit('GET /api/order/:id', async () => {
       const res = await request(app)
         .get(`/api/user/1`)
         .expect(200)
