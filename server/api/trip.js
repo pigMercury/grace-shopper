@@ -6,11 +6,20 @@ module.exports = router
 //POST route /api/trip to create a new trip
 router.post('/', async (req, res, next) => {
   try {
-    const {numPassengers} = req.body
-    const tripInfo = await Trip.create({numPassengers})
+    const {orderId, destinationId, numPassengers} = req.body
+    const tripInfo = await Trip.create({
+      orderId,
+      destinationId,
+      numPassengers
+    })
     const dest = await Destination.findById(tripInfo.destinationId)
-    const trip = {...tripInfo, cost: dest.cost} //include the cost for cart component
-    if (trip) res.status(201).json(trip)
+    const tripResponse = {
+      ...tripInfo.dataValues,
+      cost: dest.cost,
+      name: dest.name
+    }
+    //include the destination cost & name for cart component
+    if (tripResponse) res.status(201).json(tripResponse)
     else res.sendStatus(404)
   } catch (err) {
     next(err)
@@ -23,7 +32,6 @@ router.put('/:tripId', async (req, res, next) => {
     const id = req.params.tripId
     const {numPassengers} = req.body
     const currentTrip = await Trip.findById(id)
-    console.log('curr', currentTrip)
     const updatedTrip = await currentTrip.update({numPassengers})
     res
       .json({
