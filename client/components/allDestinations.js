@@ -14,7 +14,7 @@ class AllDestinations extends Component {
   render() {
     return (
       <div>
-        <h3>Destinations</h3>
+        <h3 className="title">Destinations</h3>
         <ul className="destinationsList">
           {this.props.destinationArr.map(dest => {
             return <OneDestination dest={dest} key={dest.id} />
