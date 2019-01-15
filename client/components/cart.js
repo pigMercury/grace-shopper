@@ -44,7 +44,6 @@ class Cart extends Component {
   }
 }
 
-//Container
 const mapStateToProps = state => {
   return {
     tripsArr: state.trip.trips,

@@ -6,7 +6,7 @@ import {createOrder} from '../store/order'
 import {createTrip} from '../store/trip'
 
 //Component
-class OneDestination extends Component {
+export class OneDestination extends Component {
   constructor(props) {
     super(props)
     this.state = {
