@@ -33,12 +33,7 @@ router.put('/:tripId', isAuthenticated, async (req, res, next) => {
     const {numPassengers} = req.body
     const currentTrip = await Trip.findById(id)
     const updatedTrip = await currentTrip.update({numPassengers})
-    res
-      .json({
-        message: 'trip passengers updated',
-        trip: updatedTrip
-      })
-      .status(200)
+    res.json(updatedTrip).status(200)
   } catch (err) {
     next(err)
   }
