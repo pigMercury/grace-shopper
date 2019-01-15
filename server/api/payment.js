@@ -14,7 +14,7 @@ router.post('/', async (req, res, next) => {
     const token = req.body.stripeToken // Using Express
 
     const charge = await stripe.charges.create({
-      amount: 999,
+      amount: req.body.amount,
       currency: 'usd',
       description: 'Example charge',
       source: token
