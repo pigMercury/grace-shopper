@@ -31,12 +31,6 @@ class Cart extends Component {
             }, 0)}
           </p>
         </ul>
-        <p>
-          Total: ${this.props.tripsArr.reduce((acc, cur) => {
-            acc = acc + cur.cost * cur.numPassengers
-            return acc
-          }, 0)}
-        </p>
         <Checkout
           amount={this.props.tripsArr.reduce((acc, cur) => {
             acc = acc + cur.cost * cur.numPassengers
