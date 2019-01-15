@@ -1,4 +1,5 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import axios from 'axios'
 import StripeCheckout from 'react-stripe-checkout'
 // import {completeOrder} from '../store'
@@ -6,6 +7,7 @@ import StripeCheckout from 'react-stripe-checkout'
 const CURRENCY = 'USD'
 
 const fromDollarToCent = amount => amount * 100
+
 
 const successPayment = data => {
   alert('Payment Successful')
@@ -45,4 +47,9 @@ const Checkout = ({amount, order, completeOrder}) => (
   />
 )
 
-export default Checkout
+const mapDispatchToProps = dispatch => {
+  return {
+    completeOrder: order => dispatch(completeOrder(order))
+  }
+}
+export default connect(null, mapDispatchToProps)(Checkout)
