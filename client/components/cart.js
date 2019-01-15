@@ -14,8 +14,8 @@ class Cart extends Component {
       <div>
         <h3>Destinations in your cart</h3>
         <ul>
-          {this.props.tripsArr.map(trip => {
-            return <CartItem key={trip.id} trip={trip} />
+          {this.props.tripsArr.map((trip, i) => {
+            return <CartItem key={trip.id} trip={trip} index={i} />
           })}
           <p>
             Total: ${this.props.tripsArr.reduce((acc, cur) => {

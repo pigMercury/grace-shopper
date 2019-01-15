@@ -61,14 +61,15 @@ class CartItem extends Component {
           </button>
         </p>
         <p>Cost: ${trip.numPassengers * trip.cost}</p>
+        <hr />
       </div>
     )
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    orderId: state.order.activeOrder.id
+    numPassengers: state.trip.trips[ownProps.index].numPassengers
   }
 }
 
