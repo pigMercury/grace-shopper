@@ -8,7 +8,6 @@ const CURRENCY = 'USD'
 
 const fromDollarToCent = amount => amount * 100
 
-
 const successPayment = data => {
   alert('Payment Successful')
 }
@@ -47,9 +46,4 @@ const Checkout = ({amount, order, completeOrder}) => (
   />
 )
 
-const mapDispatchToProps = dispatch => {
-  return {
-    completeOrder: order => dispatch(completeOrder(order))
-  }
-}
-export default connect(null, mapDispatchToProps)(Checkout)
+export default Checkout
