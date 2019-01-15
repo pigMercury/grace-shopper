@@ -25,10 +25,6 @@ describe('<OneDestination /> component', () => {
     renderedDest = shallow(<OneDestination dest={dest} key={dest.id} />)
   })
 
-  it('contains a break', () => {
-    expect(renderedDest.contains(<br />)).to.be.equal(true)
-  })
-
   it('renders the destination as a div', () => {
     expect(renderedDest.find('div')).to.have.length(1)
   })
