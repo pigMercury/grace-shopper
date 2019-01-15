@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 // import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, NavLink} from 'react-router-dom'
-import {changeNumPassengers} from '../store/trip'
+import {changeNumPassengers, deleteTrip} from '../store/trip'
 
 class CartItem extends Component {
   constructor(props) {
@@ -12,7 +12,7 @@ class CartItem extends Component {
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleUpdate = this.handleUpdate.bind(this)
-    // this.handleDelete = this.handleDelete.bind(this)
+    this.handleDelete = this.handleDelete.bind(this)
   }
 
   handleChange(event) {
@@ -31,6 +31,12 @@ class CartItem extends Component {
       numPassengers: this.state.numPassengers
     })
     alert('Quantity updated')
+  }
+
+  async handleDelete(event) {
+    event.preventDefault()
+    await this.props.deleteTrip(this.props.trip.id)
+    alert('Item removed from cart')
   }
 
   render() {
@@ -63,21 +69,9 @@ class CartItem extends Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    changeNumPassengers: tripObj => dispatch(changeNumPassengers(tripObj))
+    changeNumPassengers: tripObj => dispatch(changeNumPassengers(tripObj)),
+    deleteTrip: tripId => dispatch(deleteTrip(tripId))
   }
 }
 
 export default withRouter(connect(null, mapDispatchToProps)(CartItem))
-
-// async handleDelete(event) {
-//   event.preventDefault()
-//   if (!this.props.activeOrder.id) {
-//     await this.props.createOrder(this.props.userId)
-//   }
-//   await this.props.createTrip({
-//     orderId: this.props.activeOrder.id,
-//     destinationId: this.props.match.params.id,
-//     numPassengers: this.state.numPassengers
-//   })
-//   alert('Item removed from cart')
-// }
