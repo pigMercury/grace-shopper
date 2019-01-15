@@ -21,7 +21,8 @@ export const completedOrder = () => {
 //thunk creators
 export const createOrder = (userId = null) => {
   return async dispatch => {
-    const {data} = await axios.post('/api/order', userId)
+    const order = {userId: userId}
+    const {data} = await axios.post('/api/order', order)
     dispatch(createdOrder(data))
   }
 }
