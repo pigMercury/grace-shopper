@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import Checkout from './checkout'
 import {completeOrder, clearedTrips} from '../store'
+import CartItem from './cartItem'
 
 //Renders with URL /cart
 //Component
@@ -14,14 +15,7 @@ class Cart extends Component {
         <h3>Destinations in your cart</h3>
         <ul>
           {this.props.tripsArr.map(trip => {
-            return (
-              <div key={trip.id}>
-                <p>Destination: {trip.name}</p>
-                <p>Quantity: {trip.numPassengers}</p>
-                <p>Cost: ${trip.numPassengers * trip.cost}</p>
-                <hr />
-              </div>
-            )
+            return <CartItem key={trip.id} trip={trip} />
           })}
           <p>
             Total: ${this.props.tripsArr.reduce((acc, cur) => {
