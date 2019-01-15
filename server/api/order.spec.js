@@ -71,7 +71,6 @@ describe('Order routes', () => {
         .expect(200)
 
       expect(res.body).to.be.an('array') //array of trips
-      console.log(res.body)
       expect(res.body[0].destination).to.be.an('object')
       expect(res.body[0].id).to.be.equal(bigBangTrip.id)
       expect(res.body[1].id).to.be.equal(frenchRevTrip.id)

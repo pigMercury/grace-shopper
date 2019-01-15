@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import HomePage from './homePage'
 
 /**
  * COMPONENT
@@ -10,7 +11,9 @@ export const UserHome = props => {
 
   return (
     <div>
-      <h3>Welcome, {email}</h3>
+      <h2 className="login-welcome">Welcome, {email}!</h2>
+      <br />
+      <HomePage />
     </div>
   )
 }

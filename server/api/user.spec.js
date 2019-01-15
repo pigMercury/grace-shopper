@@ -7,7 +7,7 @@ const Destination = db.model('destination')
 const Trip = db.model('trip')
 const User = db.model('user')
 
-describe.only('User routes', () => {
+describe('User routes', () => {
   beforeEach(() => {
     return db.sync({force: true})
   })
@@ -89,7 +89,7 @@ describe.only('User routes', () => {
   describe('/api/user/:id', () => {
     //sends an object with two keys: userInfo (object) and user's orders (array of orders)
 
-    xit('GET /api/order/:id', async () => {
+    xit('GET /api/order/:id -- needs to be rewritten to reflect security', async () => {
       const res = await request(app)
         .get(`/api/user/1`)
         .expect(200)
