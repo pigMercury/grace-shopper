@@ -7,7 +7,7 @@ const Destination = db.model('destination')
 const Trip = db.model('trip')
 const User = db.model('user')
 
-describe.only('User routes', () => {
+describe('User routes', () => {
   beforeEach(() => {
     return db.sync({force: true})
   })

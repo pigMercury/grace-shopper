@@ -24,7 +24,6 @@ class AllDestinations extends Component {
   }
 }
 
-//Container
 const mapStateToProps = state => {
   return {
     destinationArr: state.destination.destinations
