@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 // import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, NavLink} from 'react-router-dom'
+import StripeCheckout from 'react-stripe-checkout'
+import Checkout from './checkout'
 
 //Renders with URL /cart
 //Component
@@ -28,9 +30,19 @@ class Cart extends Component {
             )
           })}
         </ul>
-        <form>
-          <p>This will be a drop-down form for payment info</p>
-        </form>
+        <p>
+          Total: ${this.props.tripsArr.reduce((acc, cur) => {
+            acc = acc + cur.cost * cur.numPassengers
+            return acc
+          }, 0)}
+        </p>
+        <Checkout
+          amount={this.props.tripsArr.reduce((acc, cur) => {
+            acc = acc + cur.cost * cur.numPassengers
+            return acc
+          }, 0)}
+          order={this.props.order}
+        />
       </div>
     )
   }
@@ -39,7 +51,8 @@ class Cart extends Component {
 //Container
 const mapStateToProps = state => {
   return {
-    tripsArr: state.trip.trips
+    tripsArr: state.trip.trips,
+    order: state.order.activeOrder
   }
 }
 
