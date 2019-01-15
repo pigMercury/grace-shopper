@@ -4,6 +4,7 @@ import {connect} from 'react-redux'
 import {withRouter, NavLink} from 'react-router-dom'
 import StripeCheckout from 'react-stripe-checkout'
 import Checkout from './checkout'
+import {completeOrder} from '../store'
 
 //Renders with URL /cart
 //Component
@@ -36,6 +37,7 @@ class Cart extends Component {
             return acc
           }, 0)}
           order={this.props.order}
+          completeOrder={this.props.completeOrder}
         />
       </div>
     )
@@ -50,4 +52,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default withRouter(connect(mapStateToProps)(Cart))
+const mapDispatchToProps = dispatch => {
+  return {
+    completeOrder: order => dispatch(completeOrder(order))
+  }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Cart))

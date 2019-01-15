@@ -27,10 +27,12 @@ export const createOrder = (userId = null) => {
 }
 
 export const completeOrder = order => {
-  console.log('complete order')
+  console.log(order) ///currently undefined
+  console.log('IN COMPLETE ORDER THUNK CREATOR')
   return async dispatch => {
-    console.log('in thunk')
+    console.log('IN THE COMPLETE ORDER THUNK')
     const {data} = await axios.put(`/api/order/${order.id}`, order)
+    console.log('I THINK I WENT TO THE DATABASE FOR COMPLETE ORDER')
     dispatch(completedOrder(data))
   }
 }
