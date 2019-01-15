@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-// import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, NavLink} from 'react-router-dom'
 import {changeNumPassengers, deleteTrip} from '../store/trip'
@@ -67,6 +66,12 @@ class CartItem extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    orderId: state.order.activeOrder.id
+  }
+}
+
 const mapDispatchToProps = dispatch => {
   return {
     changeNumPassengers: tripObj => dispatch(changeNumPassengers(tripObj)),
@@ -74,4 +79,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(CartItem))
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(CartItem)
+)
