@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-// import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, NavLink} from 'react-router-dom'
 import {changeNumPassengers, deleteTrip} from '../store/trip'
@@ -63,8 +62,15 @@ class CartItem extends Component {
           </button>
         </p>
         <p>Cost: ${trip.numPassengers * trip.cost}</p>
+        <hr />
       </div>
     )
+  }
+}
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    numPassengers: state.trip.trips[ownProps.index].numPassengers
   }
 }
 
@@ -75,6 +81,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
+
 export default withAlert(
   withRouter(connect(null, mapDispatchToProps)(CartItem))
-)
