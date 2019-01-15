@@ -7,7 +7,6 @@ import {withRouter, NavLink} from 'react-router-dom'
 //Component
 class Cart extends Component {
   render() {
-    console.log(this.props)
     return (
       <div>
         <h3>Destinations in your cart</h3>
