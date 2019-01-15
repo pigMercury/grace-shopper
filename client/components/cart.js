@@ -1,10 +1,9 @@
 import React, {Component} from 'react'
 // import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {withRouter, NavLink} from 'react-router-dom'
-import StripeCheckout from 'react-stripe-checkout'
+import {withRouter} from 'react-router-dom'
 import Checkout from './checkout'
-import {completeOrder} from '../store'
+import {completeOrder, clearedTrips} from '../store'
 
 //Renders with URL /cart
 //Component
@@ -38,6 +37,7 @@ class Cart extends Component {
           }, 0)}
           order={this.props.order}
           completeOrder={this.props.completeOrder}
+          clearedTrips={this.props.clearedTrips}
         />
       </div>
     )
@@ -53,7 +53,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    completeOrder: order => dispatch(completeOrder(order))
+    completeOrder: order => dispatch(completeOrder(order)),
+    clearedTrips: () => dispatch(clearedTrips())
   }
 }
 

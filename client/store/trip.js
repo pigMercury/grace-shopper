@@ -4,6 +4,7 @@ import axios from 'axios'
 export const CREATED_TRIP = 'CREATED_TRIP'
 export const DELETED_TRIP = 'DELETED_TRIP'
 export const CHANGED_NUM_PASSENGERS = 'CHANGED_NUM_PASSENGERS'
+export const CLEARED_TRIPS = 'CLEARED_TRIPS'
 
 //action creators
 export const createdTrip = trip => {
@@ -25,6 +26,12 @@ export const changedNumPassengers = trip => {
   return {
     type: CHANGED_NUM_PASSENGERS,
     trip
+  }
+}
+
+export const clearedTrips = () => {
+  return {
+    type: CLEARED_TRIPS
   }
 }
 
@@ -79,6 +86,9 @@ const trip = (state = initialState, action) => {
         }
       })
       newState.trips = newTrips
+      return newState
+    case CLEARED_TRIPS:
+      newState.trips = []
       return newState
     default:
       return state
