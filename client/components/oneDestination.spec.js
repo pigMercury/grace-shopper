@@ -4,39 +4,16 @@ import {expect} from 'chai'
 import React from 'react'
 import enzyme, {shallow} from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import {OneDestination} from './OneDestination'
+import {OneDestination} from './oneDestination'
 
 const adapter = new Adapter()
 enzyme.configure({adapter})
 
 describe('<OneDestination /> component', () => {
-  let oneDestinationList
-  const destinationData = [
-    {
-      name: 'World War II Germany',
-      imageURL:
-        'https://historia.adhst.ro/img/articles/2017/03/22/hitler_6.jpg',
-      cost: 3000,
-      timePeriod: '20th century',
-      description: 'Everybody wants to kill Hitler!'
-    },
-    {
-      name: 'Prehistoric Times',
-      imageURL:
-        'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/jurassic-dinosaurs-artwork-richard-bizley.jpg',
-      cost: 12000,
-      timePeriod: 'Jurassic',
-      description: 'Run with the dinosaurs!'
-    },
-    {
-      name: 'Paris World Fair',
-      imageURL:
-        'https://i1.wp.com/parisbanlieue.blog.lemonde.fr/files/2008/03/construction-de-la-tour-eiffel.1205317476.jpg?zoom=2&resize=400%2C199',
-      cost: 2500,
-      timePeriod: '19th century',
-      description: 'Come see the unveiling of the Eiffel Tower!'
-    },
-    {
+  let dest
+  let renderedDest
+  beforeEach(() => {
+    dest = {
       name: 'The First Olympics',
       imageURL:
         'https://www.historyonthenet.com/wp-content/uploads/2014/07/anicent-olympics-games.jpg',
@@ -45,16 +22,26 @@ describe('<OneDestination /> component', () => {
       description:
         'Watch ancient athletes compete in the first sporting competition of the human race!'
     }
-  ]
-
-  beforeEach(oneDestinationList => {
-    // for (let el of oneDestinationList)
-    // let oneDestinationList = shallow(
-    //   dest => <OneDestination dest={dest} key={dest.id} />)
-    // )
+    renderedDest = shallow(<OneDestination dest={dest} key={dest.id} />)
   })
 
-  xit('renders each oneDestination in the list as div', () => {
-    expect(oneDestinationList.find('div').text()).to.be.equal(4)
+  it('contains a break', () => {
+    expect(renderedDest.contains(<br />)).to.be.equal(true)
+  })
+
+  it('renders the destination as a div', () => {
+    expect(renderedDest.find('div')).to.have.length(1)
+  })
+
+  it('renders the destination with a NavLink', () => {
+    expect(renderedDest.find('NavLink')).to.have.length(1)
+  })
+
+  it('renders the destination with an "add to cart" button', () => {
+    expect(renderedDest.find('button').text()).to.be.equal('Add to Cart')
+  })
+
+  it('renders the destination with the correct cost', () => {
+    expect(renderedDest.find('h5').text()).to.be.equal('$' + dest.cost)
   })
 })
