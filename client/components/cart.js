@@ -19,6 +19,12 @@ class Cart extends Component {
                 <p>Destination: {trip.name}</p>
                 <p>Quantity: {trip.numPassengers}</p>
                 <p>Cost: ${trip.numPassengers * trip.cost}</p>
+                <p>
+                  Total: ${this.props.tripsArr.reduce((acc, cur) => {
+                    acc = acc + cur.cost * cur.numPassengers
+                    return acc
+                  }, 0)}
+                </p>
                 <hr />
               </div>
             )

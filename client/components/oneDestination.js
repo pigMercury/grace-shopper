@@ -12,7 +12,6 @@ class OneDestination extends Component {
     this.state = {
       numPassengers: 1
     }
-    // console.log(props);
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
@@ -33,7 +32,7 @@ class OneDestination extends Component {
       destinationId: this.props.dest.id,
       numPassengers: this.state.numPassengers
     })
-    // Window.alert("Item added to cart");
+    alert('Item added to cart')
   }
 
   render() {
