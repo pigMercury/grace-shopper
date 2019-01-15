@@ -16,7 +16,7 @@ const errorPayment = data => {
   alert('Payment Error')
 }
 
-const onToken = (amount, completeOrder, order) => token =>
+const onToken = (amount, completeOrder, clearedTrips, order) => token =>
   axios
     .post('api/payment', {
       stripeToken: token.id,
@@ -29,20 +29,22 @@ const onToken = (amount, completeOrder, order) => token =>
       console.log(completeOrder)
       order.completed = true
       completeOrder(order)
+      clearedTrips()
     })
     .catch(err => {
       console.log(err)
       errorPayment()
     })
 
-const Checkout = ({amount, order, completeOrder}) => (
+const Checkout = ({amount, order, completeOrder, clearedTrips}) => (
   <StripeCheckout
     amount={fromDollarToCent(amount)}
-    token={onToken(amount, completeOrder, order)}
+    token={onToken(amount, completeOrder, clearedTrips, order)}
     currency={CURRENCY}
     stripeKey="pk_test_LCiwJx3PAH7HyEGgtNYPiJ8N"
     order={order}
     completeOrder={completeOrder}
+    clearedTrips={clearedTrips}
   />
 )
 
