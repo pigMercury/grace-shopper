@@ -8,7 +8,7 @@ export const CLEARED_TRIPS = 'CLEARED_TRIPS'
 
 //action creators
 export const createdTrip = trip => {
-  // console.log("createdTrip action creator")
+  console.log('IN CREATED TRIP ACTION CREATOR')
   return {
     type: CREATED_TRIP,
     trip
@@ -38,7 +38,6 @@ export const clearedTrips = () => {
 //thunk creators
 export const createTrip = trip => {
   return async dispatch => {
-    await axios.post('/api/trip', trip)
     const {data} = await axios.post('/api/trip', trip)
     dispatch(createdTrip(data))
   }

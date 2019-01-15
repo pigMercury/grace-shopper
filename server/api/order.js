@@ -19,10 +19,9 @@ router.get('/:id', isAuthenticated, async (req, res, next) => {
 //POST route /api/order to create a new order
 router.post('/', async (req, res, next) => {
   try {
-    const {userId} = req.body
-    const order = await Order.create({userId})
-    if (order) res.json(order).status(201)
-    else res.sendStatus(404)
+    const newOrder = {userId: req.body.userId}
+    const order = await Order.create(newOrder)
+    res.json(order).status(201)
   } catch (err) {
     next(err)
   }
