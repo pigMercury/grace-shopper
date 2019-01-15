@@ -7,7 +7,7 @@ const Destination = db.model('destination')
 const Trip = db.model('trip')
 const User = db.model('user')
 
-describe.only('User routes', () => {
+describe('User routes', () => {
   beforeEach(() => {
     return db.sync({force: true})
   })
@@ -96,7 +96,6 @@ describe.only('User routes', () => {
 
       expect(res.body).to.be.an('object') //with two keys: userInfo and arrOfOrders
       expect(res.body.userInfo.id).to.be.equal(1)
-      expect(res.body.userInfo.userName).to.be.equal('Serena Williams')
       expect(res.body.orders[0].completed).to.be.equal(false)
     })
   }) // end describe('/api/user')
