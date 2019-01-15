@@ -27,9 +27,11 @@ export const createOrder = (userId = null) => {
 }
 
 export const completeOrder = order => {
+  console.log('complete order')
   return async dispatch => {
+    console.log('in thunk')
     const {data} = await axios.put(`/api/order/${order.id}`, order)
-    dispatch(completeOrder(data))
+    dispatch(completedOrder(data))
   }
 }
 
