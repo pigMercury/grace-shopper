@@ -67,28 +67,24 @@ const destinationData = [
 
 const userData = [
   {
-    userName: 'Janelle Monae',
     email: 'janelle@wondaland.com',
     password: 'cindimayweather',
     salt: 's71cj1u1sihyix9ejlmda',
     stripeToken: ''
   },
   {
-    userName: 'Awkwafina',
     email: 'awkwafina@awkwafina.nyc',
     password: 'queensrules',
     salt: 'ds938gkyysislpwlhexbel',
     stripeToken: ''
   },
   {
-    userName: 'Beyonce',
     email: 'beyonce@tidal.com',
     password: 'destinyschild',
     salt: 'he2nbflabo27k7zfnfo6w',
     stripeToken: ''
   },
   {
-    userName: 'Laura Dern',
     email: 'holdo@starwars.com',
     password: 'ellie',
     salt: 'd8emabxoxql6vuvlyd40yb',
