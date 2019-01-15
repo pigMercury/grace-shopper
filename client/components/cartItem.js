@@ -83,4 +83,6 @@ const mapDispatchToProps = dispatch => {
 
 
 export default withAlert(
-  withRouter(connect(null, mapDispatchToProps)(CartItem))
+  withRouter(connect(mapStateToProps, mapDispatchToProps)(CartItem))
+)
+
