@@ -30,6 +30,7 @@ router.post('/', async (req, res, next) => {
 
 //PUT route /api/orderId to complete an order
 router.put('/:id', isAuthenticated, async (req, res, next) => {
+  console.log('IN COMPLETE ORDER API ROUTE')
   try {
     const id = req.params.id
     const order = req.body

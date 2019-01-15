@@ -1,13 +1,13 @@
 import React from 'react'
 import axios from 'axios'
 import StripeCheckout from 'react-stripe-checkout'
-import {completeOrder} from '../store'
+// import {completeOrder} from '../store'
 
 const CURRENCY = 'USD'
 
 const fromDollarToCent = amount => amount * 100
 
-const successPayment = (data, order) => {
+const successPayment = data => {
   alert('Payment Successful')
 }
 
@@ -15,23 +15,33 @@ const errorPayment = data => {
   alert('Payment Error')
 }
 
-const onToken = amount => token =>
+const onToken = (amount, completeOrder, order) => token =>
   axios
     .post('api/payment', {
       stripeToken: token.id,
       currency: CURRENCY,
       amount: fromDollarToCent(amount)
     })
-    .then(successPayment)
-    .catch(errorPayment)
+    .then(data => {
+      successPayment(data)
+      console.log(order)
+      console.log(completeOrder)
+      order.completed = true
+      completeOrder(order)
+    })
+    .catch(err => {
+      console.log(err)
+      errorPayment()
+    })
 
-const Checkout = ({amount, order}) => (
+const Checkout = ({amount, order, completeOrder}) => (
   <StripeCheckout
     amount={fromDollarToCent(amount)}
-    token={onToken(amount)}
+    token={onToken(amount, completeOrder, order)}
     currency={CURRENCY}
     stripeKey="pk_test_LCiwJx3PAH7HyEGgtNYPiJ8N"
     order={order}
+    completeOrder={completeOrder}
   />
 )
 
