@@ -1,10 +1,11 @@
 body {
   font-family: sans-serif;
+  color: #00008b;
 }
 
 a {
   text-decoration: none;
-  color: black;
+  color: #00008b;
 }
 
 a:hover {
@@ -26,12 +27,12 @@ form div {
 }
 
 .profile {
-  max-height: 25vw;
-  max-width: 25vw;
+  max-height: 65vh;
+  max-width: 65vw;
 }
 
 .thumbnail {
-  max-height: 25vw;
+  max-height: 25vh;
   max-width: 25vw;
 }
 
@@ -57,6 +58,7 @@ form div {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  text-shadow: 0.08em 0.14em #76fefe;
 }
 
 .nav-link-container {
@@ -64,8 +66,36 @@ form div {
 }
 
 .brand-title {
-  color: black;
   text-decoration: none;
   padding: 12px;
   font-size: 30px;
+}
+
+.home-page {
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  color: #00008b;
+}
+
+.home-page .profile {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-page a {
+  text-shadow: 0.1em 0.15em #76fefe;
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.about-us {
+  margin-left: 17vw;
+  margin-right: 17vw;
+}
+
+.login-welcome {
+  text-align: center;
+  text-shadow: 0.1em 0.15em #d2ff9b;
 }

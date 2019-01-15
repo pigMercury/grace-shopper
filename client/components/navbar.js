@@ -8,7 +8,7 @@ const Navbar = ({handleClick, isLoggedIn}) => (
   <div>
     <div className="navbar">
       <Link to="/home" className="brand-title">
-        Grace Shopper
+        Timelink Travel Services
       </Link>
       <nav className="nav-link-container">
         {isLoggedIn ? (
