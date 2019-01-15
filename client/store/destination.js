@@ -8,14 +8,14 @@ export const GOT_SINGLE_DESTINATION = 'GOT_SINGLE_DESTINATION'
 export const gotDestinations = destinations => {
   return {
     type: GOT_DESTINATIONS,
-    payload: destinations
+    destinations
   }
 }
 
 export const gotSingleDestination = singleDestination => {
   return {
     type: GOT_SINGLE_DESTINATION,
-    payload: singleDestination
+    singleDestination
   }
 }
 
@@ -44,10 +44,10 @@ const destination = (state = initialState, action) => {
 
   switch (action.type) {
     case GOT_DESTINATIONS:
-      newState.destinations = action.payload
+      newState.destinations = action.destinations
       return newState
     case GOT_SINGLE_DESTINATION:
-      newState.singleDestination = action.payload
+      newState.singleDestination = action.singleDestination
       return newState
     default:
       return state
