@@ -4,15 +4,16 @@ import {withRouter} from 'react-router-dom'
 import {fetchSingleDestination} from '../store/destination'
 import {createOrder} from '../store/order'
 import {createTrip} from '../store/trip'
+import Carousel from './carousel'
 
 //Component
 class DestinationPage extends Component {
   constructor(props) {
-    console.log('pp', props)
     super(props)
     this.state = {
       numPassengers: 1
     }
+
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
   }
@@ -41,11 +42,20 @@ class DestinationPage extends Component {
   }
 
   render() {
-    const {name, imageURL, cost, timePeriod, description} = this.props
+    console.log('destinationPage props', this.props)
+    const {name, cost, timePeriod, description} = this.props
+    const {image2, image3, image4, image5, image6} = this.props
     return (
       <div className="destinationPage">
         <h3>{name}</h3>
-        <img src={imageURL} />
+        {/* <img src={imageURL} /> */}
+        <Carousel
+          image2={image2}
+          image3={image3}
+          image4={image4}
+          image5={image5}
+          image6={image6}
+        />
         <h4>{timePeriod}</h4>
         <p>{description}</p>
         <h6>${cost}</h6>
@@ -68,10 +78,14 @@ class DestinationPage extends Component {
 const mapStateToProps = state => {
   return {
     name: state.destination.singleDestination.name,
-    imageURL: state.destination.singleDestination.imageURL,
     cost: state.destination.singleDestination.cost,
     timePeriod: state.destination.singleDestination.timePeriod,
     description: state.destination.singleDestination.description,
+    image2: state.destination.singleDestination.image2,
+    image3: state.destination.singleDestination.image3,
+    image4: state.destination.singleDestination.image4,
+    image5: state.destination.singleDestination.image5,
+    image6: state.destination.singleDestination.image6,
     activeOrder: state.order.activeOrder,
     userId: state.user.id
   }

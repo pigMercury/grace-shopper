@@ -99,3 +99,13 @@ form div {
   text-align: center;
   text-shadow: 0.1em 0.15em #d2ff9b;
 }
+
+#myCarousel {
+  max-height: 65vh;
+  max-width: 65vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+}

@@ -17,7 +17,11 @@ const destinationData = [
       'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/jurassic-dinosaurs-artwork-richard-bizley.jpg',
     cost: 12000,
     timePeriod: 'Jurassic',
-    description: 'Run with the dinosaurs!'
+    description: 'Run with the dinosaurs!',
+    image2:
+      'https://this.deakin.edu.au/wp-content/uploads/2017/01/shutterstock_108683072.jpg',
+    image3:
+      'http://www.peimag.com/wp-content/uploads/2016/05/all-prehistoric-creatures-dinosaurs.jpg'
   },
   {
     name: 'Paris World Fair',
@@ -25,7 +29,16 @@ const destinationData = [
       'https://i1.wp.com/parisbanlieue.blog.lemonde.fr/files/2008/03/construction-de-la-tour-eiffel.1205317476.jpg?zoom=2&resize=400%2C199',
     cost: 2500,
     timePeriod: '19th century',
-    description: 'Come see the unveiling of the Eiffel Tower!'
+    description: 'Come see the unveiling of the Eiffel Tower!',
+    image2:
+      'https://www.nga.gov/content/dam/ngaweb/features/slideshows/Exposition-Universelle-de-1889/03fntmonum.jpg',
+    image3:
+      'https://www.histoires-de-paris.fr/wp-content/uploads/2016/04/vue-g%C3%A9n%C3%A9rale-de-lexposition-universelle-de-1889.jpg',
+    image4:
+      'https://www.unjourdeplusaparis.com/wp-content/uploads/2016/03/exposition-universelle-1889-pavilon-pastellistes-francais.jpg',
+    image5: 'https://i.ebayimg.com/images/i/322328888430-0-1/s-l1000.jpg',
+    image6:
+      'https://upload.wikimedia.org/wikipedia/commons/c/c8/Eiffel_tower_at_Exposition_Universelle%2C_Paris%2C_1889.jpg'
   },
   {
     name: 'The First Olympics',
