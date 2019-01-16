@@ -9,8 +9,6 @@ import {PersistGate} from 'redux-persist/integration/react'
 import {Provider as AlertProvider} from 'react-alert'
 import AlertTemplate from 'react-alert-template-basic'
 
-console.log(persistentStore)
-
 // establishes socket connection
 import './socket'
 

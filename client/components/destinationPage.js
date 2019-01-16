@@ -49,8 +49,6 @@ class DestinationPage extends Component {
     const latest = this.props.match.params.id
     const prev = prevProps.match.params.id
 
-    console.log('prev', prev)
-    console.log('latest', latest)
     if (latest !== prev) {
       console.log('in didupdate')
       this.props.fetchSingleDestination(latest)

@@ -42,8 +42,6 @@ router.put('/:tripId', isAuthenticated, async (req, res, next) => {
 //DELETE route route /api/trip/:id to delete trip
 router.delete('/:tripId', isAuthenticatedFromId, async (req, res, next) => {
   try {
-    console.log('in delete api')
-    console.log('tripId: ', req.params.tripId)
     const id = req.params.tripId
     await Trip.destroy({where: {id}})
     res.status(204).send()

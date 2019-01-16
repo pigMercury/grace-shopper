@@ -7,7 +7,6 @@ class Carousel extends Component {
   }
 
   render() {
-    console.log('carousel props', this.props)
     return (
       <div id="myCarousel" className="carousel slide" data-ride="carousel">
         {/* <!-- Indicators --> */}
