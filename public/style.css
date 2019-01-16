@@ -44,6 +44,10 @@ form div {
 
 .flex-item {
   padding: 25px;
+  border-width: 1px;
+  border-style: inset;
+  border-color: black;
+  margin: 10px;
 }
 
 .title {
