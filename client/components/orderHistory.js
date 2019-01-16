@@ -33,46 +33,49 @@ class OrderHistory extends Component {
   render() {
     console.log(this.state.orders)
     return (
-      <div id="order-history-div">
-        <h3>Your Order History</h3>
+      <div>
+        <h3 className="title">Your Order History</h3>
 
         <ul>
           {this.state.orders[0] ? (
             this.state.orders.map(order => {
-              return (
-                <div key={order.id}>
-                  <h3>Order Number: {order.id}</h3>
-                  <h4>Trips Booked: {order.tripList.length}</h4>
-                  <hr />
-                  {order.tripList.map(trip => {
-                    return (
-                      <div>
-                        <div className="orderHistoryFlexBox">
-                          <div>
-                            <img
-                              className="smallPic"
-                              src={trip.destination.imageURL}
-                            />
+              console.log(order.completed)
+              if (order.completed) {
+                return (
+                  <div key={order.id}>
+                    <h3>Order Number: {order.id}</h3>
+                    <h4>Trips Booked: {order.tripList.length}</h4>
+                    <hr />
+                    {order.tripList.map(trip => {
+                      return (
+                        <div>
+                          <div className="orderHistoryFlexBox">
+                            <div>
+                              <img
+                                className="smallPic"
+                                src={trip.destination.imageURL}
+                              />
+                            </div>
+                            <div>
+                              <h5>Destination: {trip.destination.name}</h5>
+                              <h5>Passengers: {trip.numPassengers}</h5>
+                            </div>
                           </div>
-                          <div>
-                            <h5>Destination: {trip.destination.name}</h5>
-                            <h5>Passengers: {trip.numPassengers}</h5>
-                          </div>
+                          <hr />
                         </div>
-                        <hr />
-                      </div>
-                    )
-                  })}
-                  <span />
-                  <span>
-                    Total: ${order.tripList.reduce((acc, cur) => {
-                      acc = acc + cur.destination.cost * cur.numPassengers
-                      return acc
-                    }, 0)}
-                  </span>
-                  <hr noshade="noshade" />
-                </div>
-              )
+                      )
+                    })}
+                    <span />
+                    <span>
+                      Total: ${order.tripList.reduce((acc, cur) => {
+                        acc = acc + cur.destination.cost * cur.numPassengers
+                        return acc
+                      }, 0)}
+                    </span>
+                    <hr noshade="noshade" />
+                  </div>
+                )
+              }
             })
           ) : (
             <h3 />

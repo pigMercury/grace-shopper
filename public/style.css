@@ -110,10 +110,6 @@ form div {
   padding: 20px;
 }
 
-#order-history-div {
-  text-align: center;
-}
-
 .orderHistoryFlexBox {
   display: flex;
   flex-wrap: wrap;
