@@ -17,7 +17,7 @@ import './socket'
 ReactDOM.render(
   <Provider store={persistentStore.store}>
     <PersistGate loading={null} persistor={persistentStore.persistor}>
-      <AlertProvider template={AlertTemplate} timeout={2000}>
+      <AlertProvider template={AlertTemplate} timeout={1000}>
         <Router history={history}>
           <App />
         </Router>
