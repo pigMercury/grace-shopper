@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter, NavLink} from 'react-router-dom'
 import {fetchSingleDestination, fetchDestinations} from '../store/destination'
 import {createOrder} from '../store/order'
 import {createTrip} from '../store/trip'
@@ -44,19 +44,29 @@ class DestinationPage extends Component {
     const latest = this.props.match.params.id
     const prev = prevProps.match.params.id
 
+    console.log('prev', prev)
+    console.log('latest', latest)
     if (latest !== prev) {
-      fetchSingleDestination(latest)
+      console.log('in didupdate')
+      this.props.fetchSingleDestination(latest)
     }
   }
 
   render() {
-    const destId = this.props.match.params.id
-    const next = destId % this.props.destinations + 1
-    const prev = destId <= 1 ? this.props.destinations : destId - 1
+    const destId = Number(this.props.match.params.id)
+    const next = destId % this.props.destinations.length + 1
+    const prev = destId <= 1 ? this.props.destinations.length : destId - 1
 
     const {name, imageURL, cost, timePeriod, description} = this.props
     return (
       <div className="destinationPage">
+        <div>
+          <NavLink to={`/destination/${prev}`}>Prev</NavLink>
+          <br />
+          <br />
+
+          <NavLink to={`/destination/${next}`}>Next</NavLink>
+        </div>{' '}
         <h3>{name}</h3>
         <img src={imageURL} />
         <h4>{timePeriod}</h4>
@@ -73,8 +83,6 @@ class DestinationPage extends Component {
         <button type="submit" onClick={this.handleSubmit}>
           Add to Cart
         </button>{' '}
-        <Link to={`/destination/${prev}`}>Prev</Link>
-        <Link to={`/destination/${next}`}>Next</Link>
       </div>
     )
   }

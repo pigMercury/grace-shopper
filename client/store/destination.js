@@ -28,7 +28,9 @@ export const fetchDestinations = () => {
 }
 
 export const fetchSingleDestination = destinationId => {
+  console.log('infetch')
   return async dispatch => {
+    console.log('inthunk')
     const {data} = await axios.get(`/api/destination/${destinationId}`)
     dispatch(gotSingleDestination(data))
   }
