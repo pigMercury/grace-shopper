@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import {fetchSingleDestination} from '../store/destination'
 import {createOrder} from '../store/order'
 import {createTrip} from '../store/trip'
@@ -8,7 +8,6 @@ import {createTrip} from '../store/trip'
 import Carousel from './carousel'
 
 import {withAlert} from 'react-alert'
-
 
 //Component
 class DestinationPage extends Component {
