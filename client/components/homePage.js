@@ -23,6 +23,24 @@ const HomePage = () => {
       </div>
       <br />
       <Link to="/destination">Browse all our fabulous destinations today!</Link>
+      <br />
+      <br />
+      <br />
+      <Link to={`/destination/${Math.floor(Math.random() * (7 - 1) + 1)}`}>
+        Random Destination
+      </Link>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
     </div>
   )
 }
