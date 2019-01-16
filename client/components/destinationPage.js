@@ -65,37 +65,37 @@ class DestinationPage extends Component {
     const {name, cost, timePeriod, description} = this.props
     const {image2, image3, image4, image5, image6} = this.props
     return (
-      <div className="destinationPage">
-        <div>
+      <div id="destinationPage">
+        <div id="prev">
           <NavLink to={`/destination/${prev}`}>Prev</NavLink>
-          <br />
-          <br />
-
+        </div>
+        <div id="carousel-container">
+          <h3>{name}</h3>
+          <Carousel
+            image2={image2}
+            image3={image3}
+            image4={image4}
+            image5={image5}
+            image6={image6}
+          />
+          <h4>{timePeriod}</h4>
+          <p>{description}</p>
+          <h6>${cost}</h6>
+          <input
+            placeholder="1"
+            id="quantity"
+            type="number"
+            min="1"
+            max="20"
+            onChange={this.handleChange}
+          />
+          <button type="submit" onClick={this.handleSubmit}>
+            Add to Cart
+          </button>{' '}
+        </div>
+        <div id="next">
           <NavLink to={`/destination/${next}`}>Next</NavLink>
         </div>{' '}
-        <h3>{name}</h3>
-        {/* <img src={imageURL} /> */}
-        <Carousel
-          image2={image2}
-          image3={image3}
-          image4={image4}
-          image5={image5}
-          image6={image6}
-        />
-        <h4>{timePeriod}</h4>
-        <p>{description}</p>
-        <h6>${cost}</h6>
-        <input
-          placeholder="1"
-          id="quantity"
-          type="number"
-          min="1"
-          max="20"
-          onChange={this.handleChange}
-        />
-        <button type="submit" onClick={this.handleSubmit}>
-          Add to Cart
-        </button>{' '}
       </div>
     )
   }
