@@ -34,6 +34,42 @@ const Destination = db.define('destination', {
     validate: {
       notEmpty: true
     }
+  },
+  image2: {
+    type: Sequelize.STRING,
+    validate: {
+      isUrl: true
+    }
+  },
+  image3: {
+    type: Sequelize.STRING,
+    validate: {
+      isUrl: true
+    }
+  },
+  image4: {
+    type: Sequelize.STRING,
+    validate: {
+      isUrl: true
+    }
+  },
+  image5: {
+    type: Sequelize.STRING,
+    validate: {
+      isUrl: true
+    }
+  },
+  image6: {
+    type: Sequelize.STRING,
+    validate: {
+      isUrl: true
+    }
+  },
+  image7: {
+    type: Sequelize.STRING,
+    validate: {
+      isUrl: true
+    }
   }
 })
 
