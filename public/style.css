@@ -108,4 +108,13 @@ form div {
 .orderHistoryFlexBox {
   display: flex;
   flex-wrap: wrap;
+
+#myCarousel {
+  max-height: 65vh;
+  max-width: 65vw;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
 }

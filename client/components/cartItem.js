@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-// import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, NavLink} from 'react-router-dom'
 import {changeNumPassengers, deleteTrip} from '../store/trip'
+import {withAlert} from 'react-alert'
 
 class CartItem extends Component {
   constructor(props) {
@@ -30,13 +30,13 @@ class CartItem extends Component {
       ...this.props.trip,
       numPassengers: this.state.numPassengers
     })
-    alert('Quantity updated')
+    this.props.alert.show('Quantity updated')
   }
 
   async handleDelete(event) {
     event.preventDefault()
     await this.props.deleteTrip(this.props.trip.id)
-    alert('Item removed from cart')
+    this.props.alert.show('Item removed from cart')
   }
 
   render() {
@@ -62,8 +62,15 @@ class CartItem extends Component {
           </button>
         </p>
         <p>Cost: ${trip.numPassengers * trip.cost}</p>
+        <hr />
       </div>
     )
+  }
+}
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    numPassengers: state.trip.trips[ownProps.index].numPassengers
   }
 }
 
@@ -74,4 +81,8 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(CartItem))
+
+export default withAlert(
+  withRouter(connect(mapStateToProps, mapDispatchToProps)(CartItem))
+)
+

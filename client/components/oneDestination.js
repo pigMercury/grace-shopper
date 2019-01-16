@@ -4,6 +4,7 @@ import {NavLink, withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {createOrder} from '../store/order'
 import {createTrip} from '../store/trip'
+import {withAlert} from 'react-alert'
 
 //Component
 export class OneDestination extends Component {
@@ -32,7 +33,7 @@ export class OneDestination extends Component {
       destinationId: this.props.dest.id,
       numPassengers: this.state.numPassengers
     })
-    alert('Item added to cart')
+    this.props.alert.show('Item added to cart')
   }
 
   render() {
@@ -74,6 +75,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(OneDestination)
+export default withAlert(
+  withRouter(connect(mapStateToProps, mapDispatchToProps)(OneDestination))
 )
