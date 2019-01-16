@@ -46,7 +46,7 @@ form div {
   padding: 25px;
   border-width: 1px;
   border-style: inset;
-  border-color: black;
+  border-color: #00008b;
   margin: 10px;
 }
 
@@ -58,11 +58,12 @@ form div {
   text-align: center;
 }
 
-.navbar {
+#navbar {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   text-shadow: 0.08em 0.14em #76fefe;
+  text-decoration: none;
 }
 
 .nav-link-container {
@@ -109,6 +110,10 @@ form div {
   padding: 20px;
 }
 
+#order-history-div {
+  text-align: center;
+}
+
 .orderHistoryFlexBox {
   display: flex;
   flex-wrap: wrap;
@@ -122,4 +127,10 @@ form div {
   margin-right: auto;
   display: flex;
   flex-direction: column;
+}
+
+#one-destination {
+  color: #00008b;
+  text-decoration: none;
+  font-family: sans-serif;
 }
