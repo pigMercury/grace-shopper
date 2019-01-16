@@ -22,7 +22,6 @@ export const completedOrder = () => {
 export const createOrder = (userId = null) => {
   return async dispatch => {
     const order = {userId: userId}
-    console.log(order)
     const {data} = await axios.post('/api/order', order)
     dispatch(createdOrder(data))
   }

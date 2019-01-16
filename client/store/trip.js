@@ -8,7 +8,6 @@ export const CLEARED_TRIPS = 'CLEARED_TRIPS'
 
 //action creators
 export const createdTrip = trip => {
-  console.log('IN CREATED TRIP ACTION CREATOR')
   return {
     type: CREATED_TRIP,
     trip
