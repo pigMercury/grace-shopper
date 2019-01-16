@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
-import {fetchSingleDestination} from '../store/destination'
+import {fetchSingleDestination, fetchDestinations} from '../store/destination'
 import {createOrder} from '../store/order'
 import {createTrip} from '../store/trip'
 
@@ -40,7 +40,20 @@ class DestinationPage extends Component {
     this.props.fetchSingleDestination(this.props.match.params.id)
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    const latest = this.props.match.params.id
+    const prev = prevProps.match.params.id
+
+    if (latest !== prev) {
+      fetchSingleDestination(latest)
+    }
+  }
+
   render() {
+    const destId = this.props.match.params.id
+    const next = destId % this.props.destinations + 1
+    const prev = destId <= 1 ? this.props.destinations : destId - 1
+
     const {name, imageURL, cost, timePeriod, description} = this.props
     return (
       <div className="destinationPage">
@@ -60,6 +73,8 @@ class DestinationPage extends Component {
         <button type="submit" onClick={this.handleSubmit}>
           Add to Cart
         </button>{' '}
+        <Link to={`/destination/${prev}`}>Prev</Link>
+        <Link to={`/destination/${next}`}>Next</Link>
       </div>
     )
   }
@@ -73,12 +88,14 @@ const mapStateToProps = state => {
     timePeriod: state.destination.singleDestination.timePeriod,
     description: state.destination.singleDestination.description,
     activeOrder: state.order.activeOrder,
-    userId: state.user.id
+    userId: state.user.id,
+    destinations: state.destination.destinations
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchDestinations: () => dispatch(fetchDestinations()),
     fetchSingleDestination: id => dispatch(fetchSingleDestination(id)),
     createOrder: userId => dispatch(createOrder(userId)),
     createTrip: tripObj => dispatch(createTrip(tripObj))
