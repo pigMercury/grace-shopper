@@ -3,6 +3,7 @@ import axios from 'axios'
 //action types
 export const CREATED_ORDER = 'CREATED_ORDER'
 export const COMPLETED_ORDER = 'COMPLETED_ORDER'
+export const GOT_ORDERS_BY_USER = 'GOT_ORDERS_BY_USER'
 
 //action creators
 export const createdOrder = order => {
