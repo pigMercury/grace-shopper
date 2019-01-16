@@ -62,8 +62,6 @@ class DestinationPage extends Component {
     const next = destId % this.props.destinations.length + 1
     const prev = destId <= 1 ? this.props.destinations.length : destId - 1
 
-    const {name, imageURL, cost, timePeriod, description} = this.props
-    console.log('destinationPage props', this.props)
     const {name, cost, timePeriod, description} = this.props
     const {image2, image3, image4, image5, image6} = this.props
     return (
