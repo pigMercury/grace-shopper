@@ -35,6 +35,7 @@ class OrderHistory extends Component {
     return (
       <div id="order-history-div">
         <h3>Your Order History</h3>
+
         <ul>
           {this.state.orders[0] ? (
             this.state.orders.map(order => {
