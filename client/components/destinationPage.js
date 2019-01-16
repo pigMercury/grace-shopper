@@ -57,7 +57,7 @@ class DestinationPage extends Component {
     const next = destId % this.props.destinations.length + 1
     const prev = destId <= 1 ? this.props.destinations.length : destId - 1
 
-    const {name, imageURL, cost, timePeriod, description} = this.props
+    const {name, cost, timePeriod, description} = this.props
     return (
       <div className="destinationPage">
         <div>
