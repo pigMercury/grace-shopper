@@ -88,12 +88,8 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    getOrdersByUsr: userId => dispatch(getOrdersByUser(userId))
-  }
-}
+
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(OrderHistory)
+  connect(mapStateToProps)(OrderHistory)
 )
