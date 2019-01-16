@@ -4,7 +4,11 @@ import {withRouter} from 'react-router-dom'
 import {fetchSingleDestination} from '../store/destination'
 import {createOrder} from '../store/order'
 import {createTrip} from '../store/trip'
+
 import Carousel from './carousel'
+
+import {withAlert} from 'react-alert'
+
 
 //Component
 class DestinationPage extends Component {
@@ -34,7 +38,7 @@ class DestinationPage extends Component {
       destinationId: this.props.match.params.id,
       numPassengers: this.state.numPassengers
     })
-    alert('Item added to cart')
+    this.props.alert.show('Item added to cart')
   }
 
   componentDidMount() {
@@ -99,6 +103,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(DestinationPage)
+export default withAlert(
+  withRouter(connect(mapStateToProps, mapDispatchToProps)(DestinationPage))
 )
