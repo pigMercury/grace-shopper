@@ -23,12 +23,12 @@ const destinationData = [
   {
     name: 'Prehistoric Times',
     imageURL:
-      'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/jurassic-dinosaurs-artwork-richard-bizley.jpg',
+      'http://www.peimag.com/wp-content/uploads/2016/05/all-prehistoric-creatures-dinosaurs.jpg',
     cost: 12000,
     timePeriod: 'Jurassic',
     description: 'Run with the dinosaurs!',
     image2:
-      'http://www.peimag.com/wp-content/uploads/2016/05/all-prehistoric-creatures-dinosaurs.jpg',
+      'https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/jurassic-dinosaurs-artwork-richard-bizley.jpg',
     image3:
       'https://this.deakin.edu.au/wp-content/uploads/2017/01/shutterstock_108683072.jpg',
     image4: 'https://wallpapercave.com/wp/xWlhICf.jpg',

@@ -33,7 +33,7 @@ class OrderHistory extends Component {
   render() {
     console.log(this.state.orders)
     return (
-      <div>
+      <div id="order-history-div">
         <h3>Your Order History</h3>
         <ul>
           {this.state.orders[0] ? (
@@ -88,8 +88,4 @@ const mapStateToProps = state => {
   }
 }
 
-
-
-export default withRouter(
-  connect(mapStateToProps)(OrderHistory)
-)
+export default withRouter(connect(mapStateToProps)(OrderHistory))

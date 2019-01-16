@@ -38,7 +38,7 @@ export class OneDestination extends Component {
 
   render() {
     return (
-      <div className="flex-item">
+      <div className="flex-item" id="one-destination">
         <NavLink to={`/destination/${this.props.dest.id}`}>
           <h4>{this.props.dest.name}</h4>
           <img className="thumbnail" src={this.props.dest.imageURL} />

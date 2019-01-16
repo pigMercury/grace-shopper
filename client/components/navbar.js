@@ -6,7 +6,7 @@ import {logout} from '../store'
 
 const Navbar = ({handleClick, isLoggedIn, userId}) => (
   <div>
-    <div className="navbar">
+    <div className="navbar" id="navbar">
       <Link to="/home" className="brand-title">
         Timelink Travel Services
       </Link>
