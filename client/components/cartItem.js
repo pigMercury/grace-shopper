@@ -42,7 +42,7 @@ class CartItem extends Component {
   render() {
     const trip = this.props.trip
     return (
-      <div>
+      <div id="cart-item">
         <p>Destination: {trip.name}</p>
         <p>
           Quantity:
@@ -55,7 +55,7 @@ class CartItem extends Component {
             onChange={this.handleChange}
           />
           <button type="submit" onClick={this.handleUpdate}>
-            Update quantity
+            Update Quantity
           </button>
           <button type="submit" onClick={this.handleDelete}>
             Delete
@@ -81,8 +81,6 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-
 export default withAlert(
   withRouter(connect(mapStateToProps, mapDispatchToProps)(CartItem))
 )
-

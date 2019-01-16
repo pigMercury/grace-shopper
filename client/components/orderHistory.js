@@ -33,9 +33,8 @@ class OrderHistory extends Component {
   render() {
     console.log(this.state.orders)
     return (
-      <div>
-        <h3 className="title">Your Order History</h3>
-
+      <div id="order-history-div">
+        <h2 id="order-heading">Your Order History</h2>
         <ul>
           {this.state.orders[0] ? (
             this.state.orders.map(order => {
