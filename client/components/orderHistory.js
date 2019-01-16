@@ -34,7 +34,7 @@ class OrderHistory extends Component {
     console.log(this.state.orders)
     return (
       <div id="order-history-div">
-        <h3>Your Order History</h3>
+        <h2 id="order-heading">Your Order History</h2>
 
         <ul>
           {this.state.orders[0] ? (

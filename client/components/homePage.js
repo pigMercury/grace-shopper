@@ -8,6 +8,7 @@ const HomePage = () => {
         className="profile"
         src="http://www.thebrunettediaries.com/sites/default/files/styles/news_full/public/uploads/2018/07/1.jpg?itok=PbWumzj6"
       />
+      <br />
       <div className="about-us">
         <p>
           Have you already visited all the best vacation hot spots, and want

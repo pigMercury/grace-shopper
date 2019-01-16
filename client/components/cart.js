@@ -11,8 +11,8 @@ import CartItem from './cartItem'
 class Cart extends Component {
   render() {
     return (
-      <div>
-        <h3>Destinations in your cart</h3>
+      <div id="cart-component">
+        <h3>Trips in Your Cart</h3>
         <ul>
           {this.props.tripsArr.map((trip, i) => {
             return <CartItem key={trip.id} trip={trip} index={i} />

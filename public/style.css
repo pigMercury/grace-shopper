@@ -1,5 +1,6 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
   color: #00008b;
 }
 
@@ -117,17 +118,23 @@ form div {
 }
 
 .smallPic {
-  max-height: 60px;
-  padding: 20px;
+  max-height: 12vw;
+  padding: 1vw;
 }
 
 #order-history-div {
+  margin-left: 5vw;
+}
+
+#order-heading {
   text-align: center;
 }
 
 .orderHistoryFlexBox {
   display: flex;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 20px;
 }
 
 #myCarousel {
@@ -143,5 +150,15 @@ form div {
 #one-destination {
   color: #00008b;
   text-decoration: none;
-  font-family: sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+    'Lucida Sans', Arial, sans-serif;
+  text-align: center;
+}
+
+#cart-component {
+  margin-left: 5vw;
+}
+
+#cart-item {
+  padding: 1vw;
 }
